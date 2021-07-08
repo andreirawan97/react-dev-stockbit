@@ -7,9 +7,3 @@ export const setMovieData = (payload: Array<MovieData>): Action => {
     payload,
   };
 };
-
-export const getMovieData = (): Action => {
-  return {
-    type: "GET_MOVIE_DATA",
-  };
-};

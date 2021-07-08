@@ -1,3 +1,3 @@
-import { setMovieData, getMovieData } from "./movieActions";
+import { setMovieData } from "./movieActions";
 
-export { setMovieData, getMovieData };
+export { setMovieData };

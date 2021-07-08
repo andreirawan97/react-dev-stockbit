@@ -13,7 +13,7 @@ export default function DetailScene() {
   const { searchQuery } = useParams<MovieDetailParam>();
   const history = useHistory();
 
-  const { data } = useFetch<FetchMovieDetailData>({
+  const { data, loading } = useFetch<FetchMovieDetailData>({
     url: `${API_URL}&i=${searchQuery}`,
   });
 
@@ -28,37 +28,40 @@ export default function DetailScene() {
         Go Back
       </p>
 
-      <Row>
-        <img
-          className={styles.imagePoster}
-          alt=""
-          src={data?.Poster}
-          width={180}
-          height={270}
-        />
-
+      {loading && <p>Loading...</p>}
+      {data && (
         <div>
-          <p className={styles.title}>
-            {data?.Title} ({data?.Year})
-          </p>
-          <p>{data?.Genre}</p>
-          <p>Language: {data?.Language}</p>
-        </div>
-      </Row>
+          {" "}
+          <Row>
+            <img
+              className={styles.imagePoster}
+              alt=""
+              src={data?.Poster}
+              width={180}
+              height={270}
+            />
 
-      <p>{data?.Plot}</p>
-
-      <p>Actors: {data?.Actors}</p>
-
-      {data?.Ratings && (
-        <div>
-          <br />
-          <p>Ratings: </p>
-          {data.Ratings.map((rating) => (
-            <p>
-              {rating.Source} - {rating.Value}
-            </p>
-          ))}
+            <div>
+              <p className={styles.title}>
+                {data?.Title} ({data?.Year})
+              </p>
+              <p>{data?.Genre}</p>
+              <p>Language: {data?.Language}</p>
+            </div>
+          </Row>
+          <p>{data?.Plot}</p>
+          <p>Actors: {data?.Actors}</p>
+          {data?.Ratings && (
+            <div>
+              <br />
+              <p>Ratings: </p>
+              {data.Ratings.map((rating) => (
+                <p>
+                  {rating.Source} - {rating.Value}
+                </p>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>
