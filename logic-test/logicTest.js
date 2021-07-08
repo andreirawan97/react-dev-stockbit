@@ -22,7 +22,7 @@ function groupedAnagram() {
     const charCodeSum = sumCharCode(word);
 
     for (let j = 0; j < finalArray.length; j++) {
-      // If ada yang sama sum char codenya
+      // If ada yang sama sum char codenya, push ke arr dalam final arr
       if (sumCharCode(finalArray[j][0]) === charCodeSum) {
         finalArray[j].push(word);
         canPushWord = false;
@@ -30,6 +30,7 @@ function groupedAnagram() {
       }
     }
 
+    // Kalau ga ada, berarti push ke final arr
     if (canPushWord) {
       finalArray.push([word]);
     }
