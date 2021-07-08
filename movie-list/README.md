@@ -28,4 +28,6 @@ TO-DO:
 
 1. Install the node modules with `yarn` command
 
-2. To start this app, use `yarn start` command
+2. To start this app, run `yarn start` command
+
+In addition, if you want to run the unit test for components, run `yarn test` command
