@@ -1,0 +1,17 @@
+export const colors = {
+  pastelRed: "#ff6961",
+  white: "white",
+  darkSlateGray: "#363636",
+  darkSlateBlue: "#4050b5",
+  whiteSmoke: "#efefef",
+  imperialRed: "#ed2939",
+  green: "#77bb6c",
+  lightGrey: "#f0f0f0",
+  grey: "#a0a0a0",
+  darkGrey: "#515151",
+  indianRed: "#d57667",
+  crimson: "#a42057",
+  lightPink: "#f4c4b3",
+  slateBlue: "#6972da",
+  bisque: "#ebe4c5",
+};
