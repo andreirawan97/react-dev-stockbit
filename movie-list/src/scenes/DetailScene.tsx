@@ -17,8 +17,6 @@ export default function DetailScene() {
     url: `${API_URL}&i=${searchQuery}`,
   });
 
-  console.log(data);
-
   return (
     <div className={styles.container}>
       <p

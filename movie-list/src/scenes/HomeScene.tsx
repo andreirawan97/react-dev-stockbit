@@ -20,10 +20,7 @@ export default function HomeScene() {
   const dispatch = useDispatch<Dispatch<Action>>();
 
   const movieData = useSelector<MovieState, MovieState["movieData"]>(
-    (state) => {
-      console.log(state);
-      return state.movieData;
-    }
+    (state) => state.movieData
   );
   const setMovieData = (movieData: Array<MovieData>) => {
     dispatch({
