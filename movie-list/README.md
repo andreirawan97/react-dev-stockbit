@@ -2,7 +2,7 @@
 
 This is a simple Movie List app using React JS.
 
-This app use React Router, Redux, Axios, and Jest.
+This app use React Router, Redux, Axios, and Jest + Enzyme.
 
 This app also didn't use any UI Library.
 
@@ -18,9 +18,9 @@ Features:
 
 ✅ Movie poster modal pop-up
 
-TO-DO:
+✅ Unit test for components
 
-❌ Unit test for components
+TO-DO:
 
 ❌ Autocomplete search
 

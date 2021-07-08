@@ -51,6 +51,10 @@
     ]
   },
   "devDependencies": {
-    "@emotion/babel-preset-css-prop": "^11.2.0"
+    "@emotion/babel-preset-css-prop": "^11.2.0",
+    "@types/enzyme": "^3.10.9",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
+    "enzyme": "^3.11.0",
+    "react-test-renderer": "^17.0.2"
   }
 }
