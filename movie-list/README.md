@@ -26,8 +26,10 @@ Features:
 
 ## How can i run this app locally? 🤔
 
-1. Install the node modules with `yarn` command
+1. Clone this repo with `git clone https://github.com/andreirawan97/react-dev-stockbit.git` and head to movie-list/ directory
 
-2. To start this app, run `yarn start` command
+2. Install the node modules with `yarn` command
+
+3. To start this app, run `yarn start` command
 
 In addition, if you want to run the unit test for components, run `yarn test` command
