@@ -11,6 +11,8 @@ import { SCENE_NAME } from "../constants/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { MovieState } from "../types/state";
 import { Action } from "../types/actions";
+import axios from "axios";
+import { colors } from "../constants/colors";
 
 const TOTAL_PAGES = 10;
 
@@ -30,6 +32,7 @@ export default function HomeScene() {
   };
 
   const [movieName, setMovieName] = useState("");
+  const [suggestions, setSuggestions] = useState<Array<string>>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [selectedMoviePoster, setSelectedMoviePoster] = useState("");
@@ -83,10 +86,29 @@ export default function HomeScene() {
     }
   }, [selectedMoviePoster]);
 
+  useEffect(() => {
+    if (movieName.length > 3) {
+      axios.get(`${API_URL}&s=${movieName}&page=1`).then((res) => {
+        const data = res.data as FetchSearchMovieData;
+        const tmpSuggestions: Array<string> = [];
+
+        data.Search &&
+          data.Search.forEach((movie, i) => {
+            if (i < 3) {
+              tmpSuggestions.push(movie.Title);
+            }
+          });
+
+        setSuggestions(tmpSuggestions);
+      });
+    }
+  }, [movieName]);
+
   const searchMovie = () => {
+    setCurrentPage(1);
     setMovieData([]);
     fetchSearchMovie({
-      url: `${API_URL}&s=${movieName}&page=${currentPage}`,
+      url: `${API_URL}&s=${movieName}&page=1`,
     });
   };
 
@@ -96,6 +118,10 @@ export default function HomeScene() {
 
   const onClickPoster = (data: MovieData) => {
     setSelectedMoviePoster(data.Poster ?? "");
+  };
+
+  const onClickSuggestion = (title: string) => {
+    setMovieName(title);
   };
 
   return (
@@ -115,6 +141,18 @@ export default function HomeScene() {
         />
         <Button title="Search" onPress={searchMovie} />
       </Row>
+
+      <div className={styles.suggestionsContainer}>
+        {suggestions.map((suggestion) => (
+          <Row
+            className={styles.suggestionContainer}
+            onClick={() => onClickSuggestion(suggestion)}
+          >
+            <div className={styles.suggestionLeft} />
+            <div>{suggestion}</div>
+          </Row>
+        ))}
+      </div>
 
       {movieData &&
         movieData.length > 0 &&
@@ -161,6 +199,20 @@ const styles = {
     width: 240,
   }),
   searchBarContainer: css({
-    marginBottom: 32,
+    marginBottom: 16,
+  }),
+  suggestionLeft: css({
+    width: 4,
+    height: 24,
+    backgroundColor: colors.slateBlue,
+    marginRight: 8,
+  }),
+  suggestionContainer: css({
+    marginBottom: 8,
+    marginLeft: 12,
+    cursor: "pointer",
+  }),
+  suggestionsContainer: css({
+    marginBottom: 16,
   }),
 };
