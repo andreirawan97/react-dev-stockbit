@@ -1,5 +1,7 @@
 # Hello! 👋
 
+![Kapture 2021-07-09 at 13 11 19](https://user-images.githubusercontent.com/25521515/125026580-1c157900-e0af-11eb-9451-be6b5357dc21.gif)
+
 This is a simple Movie List app using React JS.
 
 This app use React Router, Redux, Axios, and Jest + Enzyme.
@@ -20,9 +22,7 @@ Features:
 
 ✅ Unit test for components
 
-TO-DO:
-
-❌ Autocomplete search
+✅ Autocomplete search
 
 ## How can i run this app locally? 🤔
 
